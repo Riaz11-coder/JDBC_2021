@@ -24,23 +24,48 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="27a49cbb-5fe9-487d-bd16-c84ad35b6d26">
-        <schema name="HR" object-types="synonym, materialized view, table, view" />
-        <schema name="PUBLIC" object-types="synonym, materialized view, table, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="27a49cbb-5fe9-487d-bd16-c84ad35b6d26">
-      <console name="Connection" type="STANDARD" schema="HR" session="Main"><![CDATA[SELECT * FROM EMPLOYEES]]></console>
+      <console name="Connection" type="STANDARD" schema="HR" session="Main"><![CDATA[SELECT  first_name, last_name,employee_id,Job_id,salary
+from EMPLOYEES
+WHERE salary BETWEEN 5000 and 10000 order by SALARY asc
+select first_name, last_name,employee_id,Job_id,salary
+from EMPLOYEES
+WHERE salary BETWEEN 10000 and 20000 order by SALARY desc
+select count(*) from departments;
+select min(salary) from employees;
+select sum(salary) from employees;
+select avg(salary) from employees;
+select round (avg(salary)) from employees;
+select count(*) , department_id
+from employees
+group by department_id;
+select e.first_name , j.job_title
+from employees e
+inner join jobs j on e.job_id = j.job_id;
+select e.first_name , d.department_name
+from employees e
+left outer join departments d on e.department_id = d.department_id;
+select  e.LAST_NAME , e.salary , j.job_title
+from employees e
+right outer join jobs j on e.JOB_ID = j.JOB_ID;
+SELECT salary FROM EMPLOYEES ORDER BY salary Desc]]></console>
+    </connection>
+    <connection id="c0a5f79d-5f6a-4bd3-958b-1917b43fc0ba">
+      <console name="Connection 1" type="STANDARD" schema="SP" session="Main"><![CDATA[SELECT * FROM SPARTANS]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="c0a5f79d-5f6a-4bd3-958b-1917b43fc0ba" object-ref="consoles/Connection 1" />
+      <object connection-id="27a49cbb-5fe9-487d-bd16-c84ad35b6d26" object-ref="consoles/Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="27a49cbb-5fe9-487d-bd16-c84ad35b6d26" />
+    <connection id="c0a5f79d-5f6a-4bd3-958b-1917b43fc0ba" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -63,12 +88,15 @@
     <last-used-operator value="EQUAL" />
     <filters />
   </component>
+  <component name="DBNavigator.Project.ParserDiagnosticsManager">
+    <diagnostics-history />
+  </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
     <recently-used-interfaces />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="27a49cbb-5fe9-487d-bd16-c84ad35b6d26" active="true">
+      <connection id="27a49cbb-5fe9-487d-bd16-c84ad35b6d26" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -85,6 +113,90 @@
           <type value="USER_PASSWORD" />
           <user value="hr" />
           <deprecated-pwd value="aHI=" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <deprecated-proxy-pwd value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="false" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="true" />
+          <environment-type value="default" />
+          <connectivity-timeout value="5" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+          <object-type-filter use-master-settings="true">
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="c0a5f79d-5f6a-4bd3-958b-1917b43fc0ba" active="true" signed="true">
+        <database>
+          <name value="Connection 1" />
+          <description value="" />
+          <database-type value="ORACLE" />
+          <config-type value="BASIC" />
+          <database-version value="11.2" />
+          <driver-source value="BUILTIN" />
+          <driver-library value="" />
+          <driver value="" />
+          <url-type value="SID" />
+          <host value="54.226.201.123" />
+          <port value="1521" />
+          <database value="XE" />
+          <type value="USER_PASSWORD" />
+          <user value="SP" />
+          <deprecated-pwd value="U1A=" />
         </database>
         <properties>
           <auto-commit value="false" />
