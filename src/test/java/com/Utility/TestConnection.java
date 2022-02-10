@@ -12,7 +12,7 @@ public class TestConnection {
     @Test
     public void connectionTest(){
         System.out.println("Testing connection");
-        String connectionStr = "jdbc:oracle:thin:@54.226.201.123:1521:XE";
+        String connectionStr = "jdbc:oracle:thin:@3.92.207.208:1521:XE";
         String username = "hr";
         String password = "hr";
 

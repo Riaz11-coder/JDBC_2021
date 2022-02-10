@@ -22,11 +22,11 @@ public class DB_Connection {
         //  In a nutshell , see it as a full address of your database you can use to make connection
 
 
-        String connectionStr = "jdbc:oracle:thin:@54.226.201.123:1521:XE";
+        String connectionStr = "jdbc:oracle:thin:@3.92.207.208:1521:XE";
         String username = "hr" ;
         String password = "hr" ;
 
-        // JDBC ship with JDK , and has a lot of pre-wirtten codes to work with database
+        // JDBC ship with JDK , and has a lot of pre-written codes to work with database
         // everything we do below comes from java.sql package
 
         // creating connection object using DriverManager's static method Connection ;
